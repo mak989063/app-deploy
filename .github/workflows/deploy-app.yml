@@ -1,0 +1,32 @@
+
+name: deploy-app
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate pull request
+        if: github.event_name == 'pull_request'
+        run: echo "Pull request validation successful!"
+
+      - name: Deploy application
+        if: github.event_name == 'push'
+        run: echo "Deploying app..."
+
