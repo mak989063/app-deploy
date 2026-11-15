@@ -1,6 +1,6 @@
 
 name: deploy-app
-
+run-name: ${{ github.actor }} - ${{ github.event_name }}
 on:
   pull_request:
     types:
